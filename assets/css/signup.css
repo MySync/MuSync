@@ -18,49 +18,53 @@
   opacity: 0.7;
 }
 
- .image {
+.image {
   position: absolute;
   width: 100%;
  }
 
- .header {
+.header {
   font-size: 100px;
   margin: 80px 0
  }
 
- h1 {
+h1 {
   font-family: quicksand;
   font-weight: bold;
  }
 
-
- .wrapper-container {
+.wrapper-container {
   position: relative;
  }
 
- .section {
+.section {
   background-color: white;
   padding-top: 0;
   margin-bottom: 30px;
   border-radius: 15px;
  }
 
- .row-form{
+.row-form{
   padding: 20px;
  }
 
 .icon-block {
   padding: 0 15px;
 }
+
 .icon-block .material-icons {
   font-size: inherit;
+}
+
+h4 {
+  padding-top: 20px;
 }
 
 h6 a {
   text-decoration: underline;
 }
 
- @media only screen and (max-width : 992px) {
+@media only screen and (max-width : 992px) {
   .container .section {
     position: absolute;
     top: 40%;
