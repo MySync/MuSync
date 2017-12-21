@@ -85,12 +85,12 @@ nav ul a:hover {
 }
 
 .song-block-container {
-  height: 502px;
+  height: 525px;
   overflow: scroll; 
 }
 
 .lyrics-container {
-  height: 270px;
+  height: 262px;
   overflow: scroll; 
 }
 
@@ -114,7 +114,7 @@ h5 {
   margin: 0 0 1rem 0;
 }
 
-.scroll-h {
+.scroll-horizontal {
   overflow: scroll; 
 }
 
@@ -138,12 +138,13 @@ hr {
   border-color: rgba(255, 255, 255, 0.2); 
 }
 
-.control-container {
+.playlist-container {
   padding-top: 10px; 
 }
 
-.control-container .btn {
+.playlist-container .btn {
     margin-right: 10px; 
+    opacity: 0.8;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
@@ -214,6 +215,11 @@ body{
 .input-field input[type=search]:not(.browser-default):focus:not([readonly]) {
     border-bottom: none;
     box-shadow: none; 
+}
+
+.dropdown-content{
+  background-color: rgba(26, 35, 126, 0.7);
+  margin-top: 64px;
 }
 
 @media only screen and (max-width : 992px) {
