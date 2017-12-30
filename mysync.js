@@ -8,10 +8,10 @@ var search = "Counting Stars";
           "format": "jsonp"
           }
         }).done(function(result){
-          console.log(result);
-          result = JSON.parse(result.message.body.track_list[0].track.track_id);
-          console.log(result);
-            $.ajax ({
+              console.log(result);
+              result = JSON.parse(result.message.body.track_list[0].track.track_id);
+              console.log(result);
+              $.ajax ({
                 url: "http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + result + "&apikey=e5398b313d3765d91c9d09e9fa8a06e5",
                 method: "GET",
                 dataType: "jsonp",
@@ -25,6 +25,8 @@ var search = "Counting Stars";
                p.html(data1.message.body.lyrics.lyrics_body.replace(/\n/g, "<br />"));
         
                $("#lyrics-paragraph").append(p);
-         });
+             });
 
             });
+
+    
