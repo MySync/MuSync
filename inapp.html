@@ -23,11 +23,11 @@
 <nav>
 
   <div class="nav-wrapper indigo darken-4"><a href="#!" class="brand-logo center"><img src="assets/images/musync-logo.svg" class="musync-logo">MuSync</a>
-        
+
     <ul class="left hide-on-med-and-down">
-      <li><a href="" data-activates="dropdown2" class="dropdown-button"><i class="material-icons left">queue_music</i>My Playlists<i class="material-icons right">arrow_drop_down</i></a></li>
+      <li><a href="#!" data-activates="dropdown2" class="dropdown-button"><i class="material-icons left">queue_music</i>My Playlists<i class="material-icons right">arrow_drop_down</i></a></li>
       <!-- Dropdown Trigger-->
-      <li><a href=""><i class="material-icons left">queue</i>Create a Playlist</a></li>
+      <li><a href="#!"><i class="material-icons left">queue</i>Create a Playlist</a></li>
     </ul>
 
     <ul class="right hide-on-med-and-down">
@@ -36,10 +36,9 @@
 
     <!-- User Profile Dropdown-->
     <ul id="dropdown1" class="dropdown-content">
-      <li><a class="white-text" href="#!">Edit Profile</a></li>
       <li><a class="white-text" href="#!">Account Settings</a></li>
       <li class="divider"></li>
-      <li><a class="white-text" href="#!">Sign Out</a></li>
+      <li><a class="white-text" href="#!">Log Out</a></li>
     </ul>
 
     <!-- User Playlist Dropdown-->
@@ -55,9 +54,9 @@
 <div class="wrapper-container">
 
   <div class="row">
-    <form class="search-wrap">
+    <form class="search-wrap">`
       <div class="input-field">
-        <input id="search" type="search" required="" placeholder="Search for a song">
+        <input id="search" type="search" required="" placeholder="Search">
         <label for="search" class="label-icon"><i class="material-icons">search</i></label>
       </div>
     </form>
@@ -157,6 +156,7 @@
       <div class="lyrics-container">
         <div class="lyrics card-panel">
             <h5>Lyrics</h5>
+
             <p id="lyrics-paragraph"></p>
 
           </div>
@@ -165,6 +165,7 @@
     </div>
 
     <div class="row light-indigo-plate">
+      <h5 id="playlist-title" class="white-text text-indigo-darken-4"> Rock Me</h5>
       <div class="scroll-horizontal">
         <div class="col s12">
           <div class="playlist-block-container">
@@ -194,6 +195,7 @@
 
 <!-- Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"></script>
 <script type="text/javascript" src="assets/javascript/inapp.js"></script>
 <script type="text/javascript" src="assets/javascript/mysync.js"></script>
 <script type="text/javascript" src="assets/javascript/materialize.js"></script>
