@@ -24,4 +24,7 @@ var search = "Counting Stars";
                var p = $("<p>");
                p.html(data1.message.body.lyrics.lyrics_body.replace(/\n/g, "<br />"));
         
-               $(".lyrics card-panel").append(p);
+               $("#lyrics-paragraph").append(p);
+         });
+
+            });
