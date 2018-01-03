@@ -24,11 +24,7 @@ var search = "Counting Stars";
                var p = $("<p>");
                p.html(data1.message.body.lyrics.lyrics_body.replace(/\n/g, "<br />"));
         
-<<<<<<< HEAD
                $("#lyrics-paragraph").append(p);
-         });
+            });
 
             });
-=======
-               $(".lyrics card-panel").append(p);
->>>>>>> 82bf4ca3ea23768cea35129ba62a1392405ef651
