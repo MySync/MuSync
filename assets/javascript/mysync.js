@@ -25,6 +25,6 @@ var search = "Counting Stars";
                p.html(data1.message.body.lyrics.lyrics_body.replace(/\n/g, "<br />"));
         
                $("#lyrics-paragraph").append(p);
-         });
+            });
 
             });
