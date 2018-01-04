@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MuSync</title>
+  <!-- Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8/">
+  <!-- Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <!-- Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="assets/css/materialize.css" media="screen,projection">
+  <link type="text/css" rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<div class="music-image faux-bg"></div>
+
+<div class="gradient-image faux-bg"></div>
+
+<nav>
+
+  <div class="nav-wrapper indigo darken-4"><a class="brand-logo center"><img src="assets/images/musync-logo.svg" class="musync-logo thin">MuSync</a>
+
+    <ul class="left hide-on-med-and-down">
+      <li><a href="inapp.html"><i class="material-icons right">home</i></a></li>
+
+      <!-- Modal Trigger -->
+      <li><a data-target="modal2" class="modal-trigger thin"><i class="material-icons right">queue</i>Create a Playlist</a></li>
+
+    </ul>
+
+    <ul class="right hide-on-med-and-down">
+      <li><a href="#!" data-activates="dropdown1" class="dropdown-button thin">Music Lover<i class="material-icons left">account_circle</i><i class="material-icons right">arrow_drop_down</i></a></li>
+    </ul>
+
+    <!-- User Profile Dropdown-->
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a class="white-text thin" href="profile.html">Account Profile</a></li>
+      <li class="divider"></li>
+      <li><a class="white-text thin" href="index.html">Log Out</a></li>
+    </ul>
+
+  </div>
+</nav>
+
+<div class="wrapper-container">
+
+  <div class="row">
+    <form class="search-wrap">
+      <div class="input-field">
+        <input id="search" type="search" required="" placeholder="Search">
+        <a id="search-button" class="btn-floating btn-large waves-effect waves-light indigo"><i class="material-icons">search</i></a>
+        <label for="search" class="label-icon"></label>
+      </div>
+    </form>
+  </div>
+
+  <div class="container"> 
+
+    <div class="row light-indigo-plate">
+
+        <div class="col s6">
+            <div class="song-block-container">
+
+              <div class="song-block card-panel hoverable">
+                <div class="song-name">Song Name Here</div>
+                <div data-target="modal1" class="song-add-btn modal-trigger"><i class="material-icons">add_circle</i></div>
+              </div>
+
+              <div class="song-block card-panel hoverable">
+                <div class="song-name">Song Name Here</div>
+                <div class="song-add-btn"><i class="material-icons">add_circle</i></div>
+              </div>
+
+              <div class="song-block card-panel hoverable">
+                <div class="song-name">Song Name Here</div>
+                <div class="song-add-btn"><i class="material-icons">add_circle</i></div>
+              </div>
+
+              <div class="song-block card-panel hoverable">
+                <div class="song-name">Song Name Here</div>
+                <div class="song-add-btn"><i class="material-icons">add_circle</i></div>
+              </div>
+
+              <div class="song-block card-panel hoverable">
+                <div class="song-name">Song Name Here</div>
+                <div class="song-add-btn"><i class="material-icons">add_circle</i></div>
+              </div>
+
+              <div class="song-block card-panel hoverable">
+                <div class="song-name">Song Name Here</div>
+                <div class="song-add-btn"><i class="material-icons">add_circle</i></div>
+              </div>
+
+              <div class="song-block card-panel hoverable">
+                <div class="song-name">Song Name Here</div>
+                <div class="song-add-btn"><i class="material-icons">add_circle</i></div>
+              </div>
+
+              <div class="song-block card-panel hoverable">
+                <div class="song-name">Song Name Here</div>
+                <div class="song-add-btn"><i class="material-icons">add_circle</i></div>
+              </div>
+
+              <div class="song-block card-panel hoverable">
+                <div class="song-name">Song Name Here</div>
+                <div class="song-add-btn"><i class="material-icons">add_circle</i></div>
+              </div>
+
+              <div class="song-block card-panel hoverable">
+                <div class="song-name">Song Name Here</div>
+                <div class="song-add-btn"><i class="material-icons">add_circle</i></div>
+              </div>
+
+              <div class="song-block card-panel hoverable">
+                <div class="song-name">Song Name Here</div>
+                <div class="song-add-btn"><i class="material-icons">add_circle</i></div>
+              </div>
+
+              <div class="song-block card-panel hoverable">
+                <div class="song-name">Song Name Here</div>
+                <div class="song-add-btn"><i class="material-icons">add_circle</i></div>
+              </div>
+
+              <div class="song-block card-panel hoverable">
+                <div class="song-name">Song Name Here</div>
+                <div class="song-add-btn"><i class="material-icons">add_circle</i></div>
+              </div>
+
+          </div>
+        </div>
+
+      <div class="col s6">
+        <div>
+          <div class="video-container">
+          <iframe width="853" height="480" src="https://www.youtube.com/embed/wPqTCrm61-I" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+
+      <div class="lyrics-container">
+        <div class="lyrics card-panel">
+            <a id="lyrics-button" class="waves-effect waves-light btn indigo thin"><i class="material-icons right">expand_more</i>Lyrics</a>
+
+            <p id="lyrics-paragraph"></p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="row light-indigo-plate">
+
+      <div class="my-playlist">
+
+        <!-- Dropdown Trigger -->
+        <div id="my-playlist-btn" class="dropdown-button btn indigo thin" data-activates="dropdown2"><i class="material-icons left">queue_music</i>My Playlists<i class="material-icons right">arrow_drop_down</i></div>
+
+        <!-- Dropdown Structure -->
+        <ul id="dropdown2" class="dropdown-content playlist">
+        <li><a class="white-text thin" href="#!">Rock Me</a></li>
+        <li><a class="white-text thin" href="#!">Smooth Grooves</a></li>
+        <li><a class="white-text thin" href="#!">Chill Coding</a></li>
+        </ul>
+
+      </div>
+
+      <h3 id="playlist-title" class="white-text text-indigo-darken-4"> Rock Me</h3>
+
+      <div class="scroll-horizontal">
+        <div class="col s12">
+          <div class="playlist-block-container">
+            <div class="playlist-cover-block card-panel hoverable"><i id= "delete-song" class="material-icons grey-text right">close</i><img src="https://lorempixel.com/250/250/nature/5"></div>
+            <div class="playlist-cover-block card-panel hoverable"><img src="https://lorempixel.com/250/250/nature/5"></div>
+            <div class="playlist-cover-block card-panel hoverable"><img src="https://lorempixel.com/250/250/nature/5"></div>
+            <div class="playlist-cover-block card-panel hoverable"><img src="https://lorempixel.com/250/250/nature/5"></div>
+            <div class="playlist-cover-block card-panel hoverable"><img src="https://lorempixel.com/250/250/nature/5"></div>
+            <div class="playlist-cover-block card-panel hoverable"><img src="https://lorempixel.com/250/250/nature/5"></div>
+            <div class="playlist-cover-block card-panel hoverable"><img src="https://lorempixel.com/250/250/nature/5"></div>
+            <div class="playlist-cover-block card-panel hoverable"><img src="https://lorempixel.com/250/250/nature/5"></div>
+            <div class="playlist-cover-block card-panel hoverable"><img src="https://lorempixel.com/250/250/nature/5"></div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="playlist-container">
+        <a id="replay-button" class="indigo darken-2 waves-effect waves-light btn thin"><i class="material-icons left">replay</i>Replay All</a>
+        <a id="shuffle-button" class="indigo darken-2 waves-effect waves-light btn thin"><i class="material-icons left">shuffle</i>Shuffle</a>
+        <a id="save-button" class="indigo darken-2 waves-effect waves-light btn thin"><i class="material-icons left">check</i>Save Playlist</a>
+      </div>
+    </div>
+  
+  </div>
+</div>
+
+<!-- Modal For Add To Playlist Trigger -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Add to&nbsp...</h4>
+
+      <div class="row">
+        <form action="#">
+          <div class="row modal-form-row">
+
+                      <p>
+                      <input type="checkbox" id="test5" />
+                      <label for="test5">Rock Me</label>
+                      </p>
+
+                      <p>
+                      <input type="checkbox" id="test6" />
+                      <label for="test6">Smooth Grooves</label>
+                      </p>
+
+                      <p>
+                      <input type="checkbox" id="test7" />
+                      <label for="test7">Chill Coding</label>
+                      </p>
+            </div>
+
+        </form>
+      </div>
+    </div>
+
+    <hr>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-grey btn-flat">Add</a>
+    </div>
+  </div>
+
+  <!-- Modal For Create Playlist Trigger -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">queue</i>
+          <input id="icon_prefix" type="text" class="validate">
+          <label for="icon_prefix">Playlist Name</label>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Save</a>
+    </div>
+  </div>
+
+
+<!-- Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"></script>
+<script type="text/javascript" src="assets/javascript/inapp.js"></script>
+<script type="text/javascript" src="assets/javascript/mysync.js"></script>
+<script type="text/javascript" src="assets/javascript/materialize.js"></script>
+
+</body>
+</html>
