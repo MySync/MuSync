@@ -32,18 +32,17 @@
 
     <ul class="left hide-on-med-and-down">
       <li><a href="inapp.html"><i class="material-icons right">home</i></a></li>
-      <li><a href="#!" class="thin"><i class="material-icons right">queue</i>Create a Playlist</a></li>
     </ul>
 
     <ul class="right hide-on-med-and-down">
-      <li><a href="#!" data-activates="dropdown1" class="dropdown-button thin">Music Lover<i class="material-icons left">account_circle</i><i class="material-icons right">arrow_drop_down</i></a></li>
+      <li><a href="#!" data-activates="dropdown1" class="dropdown-button"><span id="profile-page-my-account"></span><i class="material-icons left">account_circle</i><i class="material-icons right">arrow_drop_down</i></a></li>
     </ul>
 
     <!-- User Profile Dropdown-->
     <ul id="dropdown1" class="dropdown-content">
-      <li><a class="white-text thin" href="profile.html">Account Profile</a></li>
+      <li><a class="white-text" href="profile.html">Account Profile</a></li>
       <li class="divider"></li>
-      <li><a class="white-text thin" href="index.html">Log Out</a></li>
+      <li><a id="logout" class="white-text" href="index.html">Log Out</a></li>
     </ul>
 
   </div>
@@ -69,28 +68,28 @@
                     <div class="row">
                       <div class="input-field col s10 offset-s1">
                           <h5>Name:</h5>
-                          <p>Jayna Neilson</p>
+                          <p id="logged-user-name"></p>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="input-field col s10 offset-s1">
                           <h5>Email:</h5>
-                          <p>jaynaneilson@gmail.com</p>
+                          <p id="logged-user-email"></p>
                       </div>
                     </div>
 
-                    <div class="row">
+                    <!-- <div class="row">
                       <div class="input-field col s10 offset-s1">
                           <h5>Phone Number:</h5>
-                          <p>702-370-2902</p>
+                          <p id="logged-user-phone"></p>
                       </div>
-                    </div>
+                    </div> -->
 
 
                     <div class="row center">
                         <!-- Modal Trigger -->
-  <button data-target="modal1" class="waves-effect waves-light btn indigo modal-trigger">Edit Profile</button>
+                        <button data-target="modal1" class="waves-effect waves-light btn indigo modal-trigger">Edit Profile</button>
 
 
                     </div>
@@ -107,43 +106,40 @@
     <div class="modal-content">
       <h4>Edit Profile</h4>
 
-      <div class="row">
+      
         <form class="col s12">
           <div class="row modal-form-row">
-
-                      <div class="input-field col s10 offset-s1">
-                          <i class="material-icons prefix">person</i>
-                          <input id="icon_prefix" type="text" class="validate"> 
-                          <label for="icon_prefix">Name</label>
-                      </div>
-                    </div>
                     
                     <div class="row">
                       <div class="input-field col s10 offset-s1">
-                          <i class="material-icons prefix">email</i>
-                          <input id="icon_prefix" type="text" class="validate"> 
-                          <label for="icon_prefix">Email</label>
+                          <i class="material-icons prefix">person</i>
+                          <input id="profile-name" type="text" class="validate"> 
+                          <label for="icon_prefix">Name</label>
                       </div>
-                    </div> 
-
-                    <div class="row">
+                    </div>
+                  
+                    <!-- <div class="row">
                       <div class="input-field col s10 offset-s1">
                           <i class="material-icons prefix">phone</i>
-                          <input id="icon_prefix" type="text" class="validate"> 
+                          <input id="profile-phone" type="text" class="validate"> 
                           <label for="icon_prefix">Phone Number</label>
                       </div>
-                    </div>          
+                    </div>      -->
+
+                    <div class="modal-footer">
+                      <a id="saveProfileBtn" class=" modal-action modal-close waves-effect waves-grey btn-flat">Save Changes</a>
+                    </div> 
+            </div>    
         </form>
-      </div>
+
     </div>
-    <div class="modal-footer">
-      <a class=" modal-action modal-close waves-effect waves-grey btn-flat">Save Changes</a>
-    </div>
+    
   </div>
 
 <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <script type="text/javascript" src="assets/javascript/login.js"></script>
+      <script type="text/javascript" src="https://apis.google.com/js/client.js?onload=init"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
       <script type="text/javascript" src="assets/javascript/inapp.js"></script>
       <script type="text/javascript" src="assets/javascript/materialize.js"></script>
 </body>
