@@ -334,7 +334,6 @@ function showUserPlaylist(playlist) {
 
 		// delete dateCreated field from playlist
 		// Hack?!
-		db.ref('/users/' + currentUser.uid + '/playlist/' + playlist + '/dateCreated').set(null);
 
 		$(".playlist-block-container").empty();
 
@@ -353,6 +352,8 @@ function showUserPlaylist(playlist) {
 			$(".playlist-block-container").prepend(songToAdd);
 
 		});
+
+		$("#dateCreated").parent().remove();
 
 		$(".playlist-block-container").on("click", ".playlist-song-img", function() {
 
