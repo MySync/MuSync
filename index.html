@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title>MuSync-Log-in</title>
+
+    <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" charset=UTF-8/>
+
+    <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+
+    <!--Import materialize.css-->
+
+        <link type="text/css" rel="stylesheet" href="assets/css/materialize.css"  media="screen,projection"/>
+
+        <link type="text/css" rel="stylesheet" href="assets/css/login.css">
+</head>
+
+<body>
+    
+    <div class="music-image faux-bg"></div>
+    <div class="gradient-image faux-bg"></div>
+    
+    <div class="wrapper-container">
+      
+      <div id="index-banner" class="">
+            <div class="container">
+
+              <div class="row center">
+            
+                <h1 class="header center white-text bold"><img src="assets/images/musync-logo.svg" style="width: 80px; margin-top: 50px;">MuSync</h1>
+            
+              </div>
+            </div>
+      </div>
+
+
+      <div class="container">
+
+        <div class="section">
+
+            <h4 class="grey-text text-darken-2 center">User Login</h4>
+
+              <div class="row-form">
+
+                  <form id="form-login" class="col s6">
+
+                    <div class="row">
+                      <div class="input-field col s10 offset-s1">
+                          <i class="material-icons prefix">account_box</i>
+                          <input id="username" type="email" class="validate"> 
+                          <label for="icon_prefix">Email</label>
+                      </div>
+                    </div>
+
+
+                    <div class="row">
+                      <div class="input-field col s10 offset-s1">
+                          <i class="material-icons prefix">lock</i>
+                          <input id="password" type="password" class="validate">
+                          <label for="icon_prefix">Password</label>
+                      </div>
+                    </div>
+
+
+                    <div class="row center">
+                        <button class="btn btn-large waves-effect waves-light indigo darken-4" id="btnLogin" type="submit" name="action">Login</button>
+                    </div>
+
+                    <h6 class="medium_italic center"> or sign-up <a class="indigo-text text-darken-4 italic" href="signup.html">here</a></h6>
+
+                  </form>
+                </div>
+  
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="section">
+
+            <!--   Icon Section   -->
+            <div class="row">
+              <div class="col s12 m4">
+                <div class="icon-block">
+                  <h2 class="center indigo-text text-darken-4"><i class="material-icons">library_music</i></h2>
+                  <h5 class="center">Your Fave Songs & Lyrics</h5>
+
+                  <p class="light">MuSync incorporated the YouTube API into MuSync, allowing you to easily search your favorite songs using the YouTube search engine. MuSync also incorporated the MusixMatch API to allow you to search for your favorite song lyrics while listening to it simultaneously.</p>
+                </div>
+              </div>
+
+              <div class="col s12 m4">
+                <div class="icon-block">
+                  <h2 class="center indigo-text text-darken-4"><i class="material-icons">ondemand_video</i></h2>
+                  <h5 class="center">User Experience Focused</h5>
+
+                  <p class="light">MuSync allows you easily create and save playlists to your registered accounts. We did our best to design MuSync to be intuitive for you to use, by providing an easy to use and seamless user experience.</p>
+                </div>
+              </div>
+
+              <div class="col s12 m4">
+                <div class="icon-block">
+                  <h2 class="center indigo-text text-darken-4"><i class="material-icons">sync</i></h2>
+                  <h5 class="center">Current Limitations</h5>
+
+                  <p class="light">Due to content uploaders placing usage/site/regional restrictions on their videos, you will not be able to view certain licensed videos. Unfortunately, this is a beta version of our app and we currently do not have the financial resources to purchase those licenses.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+    </div>
+  </body>
+
+ <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="assets/javascript/materialize.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+      <script type="text/javascript" src="assets/javascript/inapp.js"></script>
+</html>
