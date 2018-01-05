@@ -21,6 +21,7 @@ var search = "Counting Stars";
              }).done(function(data1){
                console.log (data1.message.body.lyrics.lyrics_body);
 
+<<<<<<< HEAD
               var p = $("<p>");
               p.html(data1.message.body.lyrics.lyrics_body.replace(/\n/g, "<br />"));
        
@@ -28,3 +29,12 @@ var search = "Counting Stars";
             });
 
            });
+=======
+               var p = $("<p>");
+               p.html(data1.message.body.lyrics.lyrics_body.replace(/\n/g, "<br />"));
+        
+               $("#lyrics-paragraph").append(p);
+         });
+
+            });
+>>>>>>> fb565625e0d20bc9108f96307989e9e3fe08109c
