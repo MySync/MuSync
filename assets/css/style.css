@@ -1,3 +1,5 @@
+/* background for all html pages */
+
 .faux-bg {
   position: fixed;
   top: 0;
@@ -17,6 +19,8 @@
   opacity: 0.7;
 }
 
+/* logo for index and signup html */
+
 .image {
   position: absolute;
   width: 100%;
@@ -26,6 +30,8 @@
   font-family: quicksand;
   font-weight: bold;
  }
+
+ /* navbar elements */
 
 .nav-wrapper {
   opacity: 0.7;
@@ -236,12 +242,13 @@ body {
     box-shadow: none; 
 }
 
-.input-field #search-button {
+.input-field #btnSearch {
   flex-shrink: 0;
   margin: 5px;
   width: 42px;
   height: 42px;
 }
+
 .btn-floating.btn-large i {
   line-height: 42px;
 }
@@ -312,6 +319,15 @@ color: #1a237e !important;
   margin-top: 185px;
 }
 
+#modal2 {
+width: 30%;
+}
+
+#playlistName {
+  min-width: 100%;
+  margin-left: 30%;
+}
+
 h4 { 
   font-size: 20px;
  }
@@ -321,6 +337,7 @@ h4 {
     position: absolute;
     top: 40%;
   }
+  
   #index-banner .section {
     top: 10%;
   }
