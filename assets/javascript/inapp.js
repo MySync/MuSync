@@ -529,7 +529,7 @@ $("#lyrics-button").on("click", function(){
 
 	// Lyrics AJAX call
 	$.ajax({
-	  url: "http://api.musixmatch.com/ws/1.1/track.search?q=" + currentSong + "&apikey=e5398b313d3765d91c9d09e9fa8a06e5",
+	  url: "https://api.musixmatch.com/ws/1.1/track.search?q=" + currentSong + "&apikey=e5398b313d3765d91c9d09e9fa8a06e5",
 	  method: "GET",
 	  dataType: "jsonp",
 	  data: {
@@ -540,7 +540,7 @@ $("#lyrics-button").on("click", function(){
 	    result = JSON.parse(result.message.body.track_list[0].track.track_id);
 	    console.log(result);
 	    $.ajax ({
-		    url: "http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + result + "&apikey=e5398b313d3765d91c9d09e9fa8a06e5",
+		    url: "https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + result + "&apikey=e5398b313d3765d91c9d09e9fa8a06e5",
 		    method: "GET",
 		    dataType: "jsonp",
 		    data: {
