@@ -53,8 +53,8 @@
                     <div class="row">
                       <div class="input-field col s10 offset-s1">
                           <i class="material-icons prefix">account_box</i>
-                          <input id="username" type="email" class="validate"> 
-                          <label for="icon_prefix">Email</label>
+                          <input id="username" required type="email" class="validate"> 
+                          <label id="lbl-username" for="icon_prefix" data-error="This field is required!">Email</label>
                       </div>
                     </div>
 
@@ -62,8 +62,8 @@
                     <div class="row">
                       <div class="input-field col s10 offset-s1">
                           <i class="material-icons prefix">lock</i>
-                          <input id="password" type="password" class="validate">
-                          <label for="icon_prefix">Password</label>
+                          <input id="password" required type="password" class="validate">
+                          <label id="lbl-password" for="icon_prefix" data-error="This field is required!">Password</label>
                       </div>
                     </div>
 

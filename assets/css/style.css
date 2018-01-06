@@ -144,7 +144,7 @@ h5 {
 
 .playlist-cover-block.card-panel {
   width: 200px;
-  height: 200px;
+  /*height: 200px;*/
   float: left;
   margin-right: 20px;
   cursor: pointer; 
@@ -153,6 +153,12 @@ h5 {
 
 .playlist-cover-block.card-panel img {
     max-width: 100%; 
+}
+
+.playlist-song-title {
+  margin: 0;
+  height: 42px;
+  overflow: hidden;
 }
 
 hr {
@@ -298,10 +304,14 @@ body {
   opacity: 0.9;
 }
 
-#delete-song {
+.material-icons.grey-text.close-button.right {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.playlist-song-title.text-center {
+  color: grey;
 }
 
 #delete-song:hover {

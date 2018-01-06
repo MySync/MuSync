@@ -52,7 +52,7 @@
 
           <h4 class="grey-text text-darken-2 center">Sign-up for an Account</h4>
 
-              <div class="row-form">
+              <div id="signup-form" class="row-form">
 
               <form class="col s6">
 
@@ -60,7 +60,7 @@
                       <div class="input-field col s10 offset-s1">
                           <i class="material-icons prefix">person</i>
                           <input id="signup-name" minlength="2" type="text" required class="validate"> 
-                          <label for="icon_prefix" data-error="Surely your name must be longer than 1 character">Name</label>
+                          <label id="lbl-signup-name" for="icon_prefix" data-error="Surely your name must be longer than that!">Name</label>
                       </div>
                     </div>
 
@@ -69,7 +69,7 @@
                       <div class="input-field col s10 offset-s1">
                           <i class="material-icons prefix">email</i>
                           <input id="signup-email" type="email" required class="validate"> 
-                          <label for="icon_prefix" data-error="Please enter a valid email">Email</label>
+                          <label id="lbl-signup-email" for="icon_prefix" data-error="This field is required!">Email</label>
                       </div>
                     </div>
 
@@ -78,7 +78,7 @@
                       <div class="input-field col s10 offset-s1">
                           <i class="material-icons prefix">lock</i>
                           <input id="signup-password" minlength="5" maxlength="12" type="password" required class="validate">
-                          <label for="icon_prefix" data-error="Password must be between 5 and 12 characters">Password</label>
+                          <label id="lbl-signup-password" for="icon_prefix" data-error="Password must be between 5 and 12 characters">Password</label>
                       </div>
                     </div>
 
@@ -86,7 +86,8 @@
                       <div class="input-field col s10 offset-s1">
                           <i class="material-icons prefix">check_box</i>
                           <input id="signup-confirm-password" type="password" required class="validate">
-                          <label for="icon_prefix">Confirm Password</label>                      </div>
+                          <label id="lbl-signup-confirm-password" for="icon_prefix">Confirm Password</label>                  
+                      </div>
                     </div>
 
 
