@@ -44,43 +44,6 @@ $("#form-login").on("submit", function(e){
 	var loginuser = $("#username").val();
 	var loginpass = $("#password").val();
 
-	// if (loginuser == "") {
-	// 	console.log('please enter an email');
-	// 	return;
-	// }
-	// else if (loginpass == "") {
-	// 	console.log('please enter a password');
-	// 	return;
-	// }
-
-	$("#form-login").validate({
-		rules: {
-			user: {
-				required: true,
-				email: true
-			},
-			pass: {
-				required: true
-			}
-		},
-		messages: {
-			user: {
-				required: 'Please enter an email to login',
-				email: 'Please enter a valid email'
-			}
-		},
-		errorElement : 'div',
-	    errorPlacement: function(error, element) {
-	      var placement = $(element).data('error');
-	      if (placement) {
-	        $(placement).append(error)
-	      } else {
-	        error.insertAfter(element);
-	      }
-	    }
-	});
-
-
 	console.log(loginuser, loginpass);
 
 	if (validateEmail(loginuser)) {
@@ -106,11 +69,14 @@ $("#form-login").on("submit", function(e){
 			var errorCode = error.code;
 			var errorMessage = error.message;
 
-			
-
-			// if (errorMessage === "There is no user record corresponding to this identifier. The user may have been deleted.") {
-			// 	$("#username").attr('data-error', 'Invalid username!');
-			// }
+			if (errorCode == "auth/user-not-found") {
+				$("#username").addClass('invalid');
+				$("#lbl-username").attr('data-error', 'This email does not exist in our database, please sign-up by using the link below!');
+			}
+			else if (errorCode == "auth/wrong-password") {
+				$("#password").addClass('invalid');
+				$("#lbl-password").attr('data-error', 'Incorrect Password! Please try again!');
+			}
 
 			console.log("error code: " + errorCode);
 			console.log("error msg: " + errorMessage);
@@ -119,13 +85,16 @@ $("#form-login").on("submit", function(e){
 	}
 	else {
 		console.log('please enter a valid email');
+
+		$("#username").addClass('invalid');
+		$("#lbl-username").attr('data-error', 'Please enter a valid email');
 	}
 
 	
 });
 
 //Signup Button Event
-$("#btnSignup").on("click", function(e) {
+$("#signup-form").on("submit", function(e) {
 	
 	e.preventDefault();
 
@@ -135,34 +104,23 @@ $("#btnSignup").on("click", function(e) {
 	var userPassConfirm = $("#signup-confirm-password").val();
 
 	// Form Validation
-	// if (userName == "" || userEmail == "" || userPass == "" || userPassConfirm == "") {
-	// 	console.log("all fields are required!");
-	// 	return false;
-	// }
-
 	if (userPass !== userPassConfirm) {
 		console.log('passwords do not match!');
+
+		$("#signup-password").addClass('invalid');
 		
+		$("#signup-confirm-password").addClass('invalid');
+		$("#lbl-signup-confirm-password").attr('data-error', 'Passwords did not match');
+
+		$("#signup-password").focus();
+
 		$("#signup-password").val("");
 		$("#signup-confirm-password").val("");
 
-		return false;
+		return;
 	}
 
-	// $("#signup-form").validate({
-	// 	rules: {
-	// 		signup-confirm-password: {
-	// 			required: true,
-	// 			minlength: 5,
-	// 			equalTo: "#signup-password"
-	// 		}
-	// 	},
-	// 	messages {
-	// 		signup-confirm-password: {
-	// 			equalTo: "Passwords do not match!"
-	// 		}
-	// 	}
-	// });
+	
 
 	//TODO: check if email already exists - complete
 	//Check performed in emailExistsInDB();
@@ -178,16 +136,44 @@ $("#btnSignup").on("click", function(e) {
 			console.log(userCreated);
 			console.log('sign up success!');
 
+			// Update User Name
+			user.updateProfile({
+			  displayName: userName
+			}).then(function() {
+			  // Update successful.
+			  console.log('user info update successful');
+
+			}).catch(function(error) {
+			  
+			  //Error
+			  var errorCode = error.code;
+			  var errorMessage = error.message;
+
+			  console.log(errorCode);
+			  console.log(errorMessage);
+			});
+
+			// Redirect to App main page
 			window.location = 'inapp.html';
 		})
 		.catch(function(error) {
 			var errorCode = error.code;
 			var errorMessage = error.message;
 
-			console.log('sign up error!');
+			// Form Validation
+			if (errorCode == "auth/email-already-in-use") {
+				$("#signup-email").addClass('invalid');
+				$("#lbl-signup-email").attr('data-error', 'Email ID already in use! Please choose a different email or sign in!');
+				$("#signup-email").focus();
+			}
+
+			console.log(errorCode);	
 		});
 	}
 	else {
+
+		$("#signup-email").addClass('invalid');
+		$("#lbl-signup-email").attr('data-error', 'Please enter a valid email!');
 		console.log('please enter a valid email');
 	}
 
@@ -199,6 +185,7 @@ $("#logout").on("click", function(){
 	var referencePath = usersRefPath + '/' + currentUser.uid + '/online';
 	db.ref(referencePath).set(false);
 
+	// Sign Out
 	auth.signOut().then(function() {
 		console.log('signed out user: ' + currentUser.email);
 	});
@@ -227,6 +214,8 @@ auth.onAuthStateChanged(function(firebaseUser) {
 		$("#logged-user-name").text(currentUser.displayName);
 		$("#logged-user-email").text(currentUser.email);
 		$("#logged-user-phone").text(currentUser.phoneNumber);
+
+		$(".lyrics-container").hide();
 
 		// if(window.location == 'index.html') {
 		// 	window.location.replace('inapp.html');
@@ -260,6 +249,7 @@ function init() {
 	});
 }
 
+// Function to add user to the firebase database
 function addUserToDB(uid) {
 	var referencePath = usersRefPath + '/' + uid;
 	db.ref(referencePath).set({
@@ -274,6 +264,7 @@ function addUserToDB(uid) {
 
 }
 
+// Function to check if email entered is already in the database or not
 function emailExistsInDB(email) {
 	db.ref(usersRefPath).once('value', function(snapshot) {
 		console.log(snapshot.val());
@@ -303,11 +294,9 @@ function emailExistsInDB(email) {
 
 // Function to add playlist in the '+' modal
 function updateUserPlaylistOptions() {
-	//var myUID = currentUser.uid;
 
 	db.ref('/users/' + currentUser.uid + '/playlist/').on('value', function(snapshot) {
 
-		
 		$(".playlist-list").empty();
 		$("#dropdown2").empty();
 
@@ -318,7 +307,7 @@ function updateUserPlaylistOptions() {
 				+ "<label for='" + childSnapshot.key + "'>" + childSnapshot.key + "</label></p>");
 
 
-			var myPlaylistOptions = $("<li><a class='playlist-option' id='playlist-" + childSnapshot.key + "' class='white-text thin' href='#!'>" + childSnapshot.key + "</a></li>")
+			var myPlaylistOptions = $("<li><a class='playlist-option white-text thin' id='playlist-" + childSnapshot.key + "' class='white-text thin' href='#!'>" + childSnapshot.key + "</a></li>")
 
 			$(".playlist-list").append(myPlaylist);
 			$("#dropdown2").append(myPlaylistOptions);
@@ -331,9 +320,6 @@ function updateUserPlaylistOptions() {
 function showUserPlaylist(playlist) {
 
 	db.ref('/users/' + currentUser.uid + '/playlist/' + playlist).on('value', function(snapshot) {
-
-		// delete dateCreated field from playlist
-		// Hack?!
 
 		$(".playlist-block-container").empty();
 
@@ -348,13 +334,13 @@ function showUserPlaylist(playlist) {
 				+ "<img class='playlist-song-img' id='" + songURL + "' src='" + songInPlaylist.thumbnail + "'>"
 				+ "<p class='playlist-song-title text-center'>" + songInPlaylist.name + "</div>");
 
-
 			$(".playlist-block-container").prepend(songToAdd);
 
 		});
 
 		$("#dateCreated").parent().remove();
 
+		// If a song img is clicked, play it on the youtube player
 		$(".playlist-block-container").on("click", ".playlist-song-img", function() {
 
 			var myVideoID = $(this).attr('id');
@@ -386,26 +372,30 @@ function showUserPlaylist(playlist) {
 
 // ============ INAPP BTN LISTENER =============
 
+// Create a playlist
 $("#btnCreatePlaylist").on("click", function(e){
 
 	e.preventDefault();
 
 	var playlistName = $("#playlistName").val();
-
 	var myUID = currentUser.uid;
 
-	// Create a Ref Path
-	var playlistRefPath = '/users/' + myUID + '/playlist/' + playlistName;
+	if (playlistName == "") {
+		return;
+	}
+	else {
+		// Create a Ref Path
+		var playlistRefPath = '/users/' + myUID + '/playlist/' + playlistName;
 
-	var today = Date();
+		var today = Date();
 
-	db.ref(playlistRefPath).set({dateCreated: today});
-
-	console.log(playlistRefPath);
-
+		db.ref(playlistRefPath).set({dateCreated: today});
+		console.log(playlistRefPath);
+	}
+	
 });
 
-
+// Search for a song/video on youtube
 $("#btnSearch").on("click", function(e) {
 
 	e.preventDefault();
@@ -430,6 +420,7 @@ $("#btnSearch").on("click", function(e) {
 		console.log("success");
 		console.log(response);
 
+		$(".lyrics-container").show();
 		// VideoId for 1st item in the list from response
 		var firstVideo = response.items[0].id.videoId;
 
@@ -455,51 +446,42 @@ $("#btnSearch").on("click", function(e) {
 		// If a card is clicked, display that video in the player
 		$(".song-name").on("click", function() {
 			var videoId = $(this).attr('data-video');
-			
-			// name of song currently on video player (to be used to pull lyrics)
-			// currentSong = $(this).text();
-			// console.log(currentSong);
-
 			$("#video-player").attr({
 				src: 'https://www.youtube.com/embed/' + videoId
 			});
 		});
 
+		// Add song to specified playlist
 		$(".song-add-btn").on("click", function(){
 			var selectedItemID = $(this).attr('id');
 
 			$("#btnAdd").on("click", function() {
 
-			var myUID = currentUser.uid;
+				var myUID = currentUser.uid;
 
-			// 	// Get selected item's details
-			var myVideoID = response.items[selectedItemID].id.videoId;
-			var myVideoTitle = response.items[selectedItemID].snippet.title;
-			var myVideoThumb = response.items[selectedItemID].snippet.thumbnails.high.url;
-			var myVideoDesc = response.items[selectedItemID].snippet.description;
+				// 	// Get selected item's details
+				var myVideoID = response.items[selectedItemID].id.videoId;
+				var myVideoTitle = response.items[selectedItemID].snippet.title;
+				var myVideoThumb = response.items[selectedItemID].snippet.thumbnails.high.url;
+				var myVideoDesc = response.items[selectedItemID].snippet.description;
 
 
 
-			$(".playlist-checkbox:checked").each(function() {
+				$(".playlist-checkbox:checked").each(function() {
 
-				var playlistName = $(this).attr('id');
+					var playlistName = $(this).attr('id');
 
-				var playlistRefPath = '/users/' + myUID + '/playlist/' + playlistName + '/' + myVideoID;
-				
-			 	// Save playlist & songs for logged in user
-				db.ref(playlistRefPath).set({
-					name: myVideoTitle,
-					thumbnail: myVideoThumb,
-					description: myVideoDesc
+					var playlistRefPath = '/users/' + myUID + '/playlist/' + playlistName + '/' + myVideoID;
+					
+				 	// Save playlist & songs for logged in user
+					db.ref(playlistRefPath).set({
+						name: myVideoTitle,
+						thumbnail: myVideoThumb,
+						description: myVideoDesc
+					});
 				});
 			});
-
-
 		});
-		});
-		
-
-
 	})
 	.fail(function() {
 		console.log("error");
@@ -518,7 +500,6 @@ $("#dropdown2").on("click", ".playlist-option", function() {
 	$("#playlist-title").text(playlistTitleToShow);
 
 	showUserPlaylist(playlistTitleToShow);
-
 });
 
 
@@ -564,7 +545,6 @@ $("#lyrics-button").on("click", function(){
 // ============= PROFILE BTN LISTENER ===============
 
 $("#saveProfileBtn").on("click", function() {
-
 	
 	var user = firebase.auth().currentUser;
 
