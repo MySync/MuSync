@@ -137,21 +137,21 @@ $("#signup-form").on("submit", function(e) {
 			console.log('sign up success!');
 
 			// Update User Name
-			user.updateProfile({
-			  displayName: userName
-			}).then(function() {
-			  // Update successful.
-			  console.log('user info update successful');
+			// user.updateProfile({
+			//   displayName: userName
+			// }).then(function() {
+			//   // Update successful.
+			//   console.log('user info update successful');
 
-			}).catch(function(error) {
+			// }).catch(function(error) {
 			  
-			  //Error
-			  var errorCode = error.code;
-			  var errorMessage = error.message;
+			//   //Error
+			//   var errorCode = error.code;
+			//   var errorMessage = error.message;
 
-			  console.log(errorCode);
-			  console.log(errorMessage);
-			});
+			//   console.log(errorCode);
+			//   console.log(errorMessage);
+			// });
 
 			// Redirect to App main page
 			window.location = 'inapp.html';
