@@ -356,12 +356,9 @@ function showUserPlaylist(playlist) {
 
 			var songIDToDelete = $(this).next().attr('id');
 
-			if(confirm('Are you sure you want to delete?')) {
+			db.ref('/users/' + currentUser.uid + '/playlist/' + playlist).child(songIDToDelete).remove();
 
-				db.ref('/users/' + currentUser.uid + '/playlist/' + playlist).child(songIDToDelete).remove();
-
-				$(this).parent().remove();
-			}
+			$(this).parent().remove();
 
 		});
 
@@ -391,6 +388,8 @@ $("#btnCreatePlaylist").on("click", function(e){
 
 		db.ref(playlistRefPath).set({dateCreated: today});
 		console.log(playlistRefPath);
+
+		$("#playlistName").val("");
 	}
 	
 });
@@ -502,7 +501,16 @@ $("#dropdown2").on("click", ".playlist-option", function() {
 	showUserPlaylist(playlistTitleToShow);
 });
 
+// Delete displayed playlist
+$("#delete-playlist-button").on("click", function() {
 
+    var playlistToDelete = $("#playlist-title").text();
+    console.log(playlistToDelete);
+
+    db.ref('/users/' + currentUser.uid + '/playlist/' + playlistToDelete).remove();
+
+    $("#playlist-title").empty();
+});
 
 // Lyrics Button Event Listener
 $("#lyrics-button").on("click", function(){
