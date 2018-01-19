@@ -70,12 +70,23 @@ $("#form-login").on("submit", function(e){
 			var errorMessage = error.message;
 
 			if (errorCode == "auth/user-not-found") {
+				
 				$("#username").addClass('invalid');
 				$("#lbl-username").attr('data-error', 'This email does not exist in our database, please sign-up by using the link below!');
+
+				$("#btnLogin").addClass('animated shake');
+				setTimeout(() => {
+					$("#btnLogin").removeClass('animated shake');
+				}, 1000)
 			}
 			else if (errorCode == "auth/wrong-password") {
 				$("#password").addClass('invalid');
 				$("#lbl-password").attr('data-error', 'Incorrect Password! Please try again!');
+
+				$("#btnLogin").addClass('animated shake');
+				setTimeout(() => {
+					$("#btnLogin").removeClass('animated shake');
+				}, 1000)
 			}
 
 			console.log("error code: " + errorCode);
@@ -88,6 +99,11 @@ $("#form-login").on("submit", function(e){
 
 		$("#username").addClass('invalid');
 		$("#lbl-username").attr('data-error', 'Please enter a valid email');
+
+		$("#btnLogin").addClass('animated shake');
+		setTimeout(() => {
+			$("#btnLogin").removeClass('animated shake');
+		}, 1000);
 	}
 
 	
@@ -116,6 +132,11 @@ $("#signup-form").on("submit", function(e) {
 
 		$("#signup-password").val("");
 		$("#signup-confirm-password").val("");
+
+		$("#btnSignup").addClass('animated shake');
+		setTimeout(() => {
+			$("#btnSignup").removeClass('animated shake');
+		}, 1000);
 
 		return;
 	}
@@ -175,6 +196,11 @@ $("#signup-form").on("submit", function(e) {
 		$("#signup-email").addClass('invalid');
 		$("#lbl-signup-email").attr('data-error', 'Please enter a valid email!');
 		console.log('please enter a valid email');
+
+		$("#btnSignup").addClass('animated shake');
+		setTimeout(() => {
+			$("#btnSignup").removeClass('animated shake');
+		}, 1000);
 	}
 
 });
@@ -329,7 +355,7 @@ function showUserPlaylist(playlist) {
 			var songURL = childSnapshot.key;
 
 			// Create and prepend playlist song for appropriate playlist
-			var songToAdd = $("<div class='playlist-cover-block card-panel hoverable'>" 
+			var songToAdd = $("<div class='playlist-cover-block card-panel hoverable animated slideInDown'>" 
 				+ "<i id='delete-song-" + songURL + "' class='material-icons grey-text close-button right'>close</i>"
 				+ "<img class='playlist-song-img' id='" + songURL + "' src='" + songInPlaylist.thumbnail + "'>"
 				+ "<p class='playlist-song-title text-center'>" + songInPlaylist.name + "</div>");
@@ -401,6 +427,10 @@ $("#btnSearch").on("click", function(e) {
 
 	var searchStr = $("#search").val();
 
+	if (searchStr === "") {
+		return;
+	}
+
 	// Prepare the request
 	$.ajax({
 		url: 'https://www.googleapis.com/youtube/v3/search',
@@ -419,9 +449,20 @@ $("#btnSearch").on("click", function(e) {
 		console.log("success");
 		console.log(response);
 
-		$(".lyrics-container").show();
+		// If div was hidden, slide it in to show it - animate.css
+		if (!($(".lyrics-container").is(':visible'))) {
+			$(".lyrics-container").show();
+			$(".lyrics-container").addClass('animated slideInRight').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
+				$(".lyrics-container").removeClass('animated slideInRight');
+			});
+		}
+		
+
 		// VideoId for 1st item in the list from response
 		var firstVideo = response.items[0].id.videoId;
+
+		// animate css
+		$("#video-player").addClass('animated slideInRight');
 
 		// Display the 1st item in the youtube player
 		$("#video-player").attr({
@@ -440,6 +481,7 @@ $("#btnSearch").on("click", function(e) {
 					"<div data-target='modal1' id='"+ i + "' class='song-add-btn modal-trigger'><i class='material-icons'>add_circle</i></div>");
 
 			$(".song-block-container").append(resultsDIV);
+			$(".song-block-container").addClass('animated slideInLeft');
 		}
 
 		// If a card is clicked, display that video in the player
@@ -492,7 +534,6 @@ $("#btnSearch").on("click", function(e) {
 });
 
 
-
 $("#dropdown2").on("click", ".playlist-option", function() {
 	var playlistTitleToShow = $(this).text();
 
@@ -517,6 +558,9 @@ $("#lyrics-button").on("click", function(){
 
 	var currentSong = $("#song-lyrics").val();
 
+	if (currentSong === "") {
+		return;
+	}
 	// Lyrics AJAX call
 	$.ajax({
 	  url: "https://api.musixmatch.com/ws/1.1/track.search?q=" + currentSong + "&apikey=e5398b313d3765d91c9d09e9fa8a06e5",
@@ -539,7 +583,7 @@ $("#lyrics-button").on("click", function(){
 	  	}).done(function(data1){
 	    	console.log (data1.message.body.lyrics.lyrics_body);
 
-		  	var p = $("<p>");
+		  	var p = $("<p class='animated fadeInRight'>");
 		   	p.html(data1.message.body.lyrics.lyrics_body.replace(/\n/g, "<br />"));
 
 		   	$("#lyrics-paragraph").empty();
