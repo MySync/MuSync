@@ -10,3 +10,5 @@ By utilizing Firebase Authentication, MuSync allows users to register and login 
 - Materialize
 - YouTube API
 - MusixMatch API
+
+Website: https://mysync.github.io/MuSync/
